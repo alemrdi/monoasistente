@@ -1,1 +1,1 @@
-export { default } from '../MonoAsistente'
+export { default } from '../monoasistente'

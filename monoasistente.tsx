@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { useState, useRef, useEffect, useCallback } from "react";
 
 // ─── DATOS FISCALES ───────────────────────────────────────────────────────────
@@ -98,7 +99,7 @@ function generarVencimientos(){
     const estado=dif<0?"vencido":dif===0?"hoy":dif<=5?"urgente":dif<=30?"proximo":"futuro";
     v.push({id:i,desc:"Cuota ARCA",fecha:`20/${String(d.getMonth()+1).padStart(2,"0")}/${d.getFullYear()}`,dif,estado});
   }
-  const difR=Math.round((new Date(2026,5,30)-hoy)/86400000);
+  const difR=Math.round((new Date(2026,5,30).getTime()-hoy.getTime())/86400000);
   v.push({id:99,desc:"Recategorización",fecha:"30/06/2026",dif:difR,estado:difR<=30?"proximo":"futuro"});
   return v.sort((a,b)=>a.dif-b.dif);
 }

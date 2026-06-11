@@ -94,7 +94,7 @@ function generarVencimientos(){
   const v=[];
   for(let i=0;i<5;i++){
     const d=new Date(hoy.getFullYear(),hoy.getMonth()+i,20);
-    const dif=Math.round((d-hoy)/86400000);
+    const dif=Math.round((d.getTime()-hoy.getTime())/86400000);
     const estado=dif<0?"vencido":dif===0?"hoy":dif<=5?"urgente":dif<=30?"proximo":"futuro";
     v.push({id:i,desc:"Cuota ARCA",fecha:`20/${String(d.getMonth()+1).padStart(2,"0")}/${d.getFullYear()}`,dif,estado});
   }
